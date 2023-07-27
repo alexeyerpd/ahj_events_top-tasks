@@ -21,7 +21,7 @@
             "extends": ["plugin:jest/recommended"],
             "rules": {
                 "jest/prefer-expect-assertions": "off",
-                "indent": [4, "tab"]
+                "indent": [2, "tab"]
             }
         }
     ]
