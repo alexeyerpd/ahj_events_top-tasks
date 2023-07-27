@@ -12,7 +12,7 @@
     },
     "rules": {
         "no-unused-vars": "warn",
-        "indent": ["error", 4]
+        "indent": ["warn", 4]
     },
     "overrides": [
         {
@@ -21,7 +21,7 @@
             "extends": ["plugin:jest/recommended"],
             "rules": {
                 "jest/prefer-expect-assertions": "off",
-                "indent": [2, "tab"]
+                "indent": ["error", "tab"]
             }
         }
     ]

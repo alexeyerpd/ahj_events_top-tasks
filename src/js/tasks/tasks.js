@@ -54,7 +54,7 @@ export class Tasks {
                     <div class="checkbox">
                         <input class="checkbox-input" type="checkbox" ${
                             task.pinned ? "checked" : ""
-                        }/>
+                        } />
                         <div class="checkbox-figure">V</div>
                     </div>
                 </label>
