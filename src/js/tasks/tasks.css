@@ -20,6 +20,21 @@
     outline: none;
 }
 
+.tasks-form-error {
+    visibility: hidden;
+
+    margin-block-start: 10px;
+
+    font-size: 12px;
+    text-align: center;
+
+    color: #f00;
+}
+
+.tasks-form-error_visible {
+    visibility: visible;
+}
+
 .tasks-pinned {
 }
 

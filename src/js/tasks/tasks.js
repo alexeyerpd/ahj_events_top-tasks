@@ -1,5 +1,7 @@
 import "./tasks.css";
 
+const SHOW_ERROR_CLASS = "tasks-form-error_visible";
+
 export class Tasks {
     constructor(root) {
         this._root = root;
@@ -11,6 +13,7 @@ export class Tasks {
 
         this.pinnedTasksContainer = null;
         this.allTasksContainer = null;
+        this.errorElement = null;
 
         this.timeoutId = null;
         this.filterText = "";
@@ -19,12 +22,16 @@ export class Tasks {
     init() {
         this._root.insertAdjacentHTML("beforeend", this.renderTasks());
 
+        this.setElements();
+        this.initEvents();
+        this.updateTasks();
+    }
+
+    setElements() {
         this.pinnedTasksContainer =
             this._root.querySelector(".list-pinned-tasks");
         this.allTasksContainer = this._root.querySelector(".list-all-tasks");
-
-        this.initEvents();
-        this.updateTasks();
+        this.errorElement = this._root.querySelector(".tasks-form-error");
     }
 
     renderTasks() {
@@ -33,6 +40,7 @@ export class Tasks {
                 <h1>TOP Tasks</h1>
                 <form class="tasks-form">
                     <input class="tasks-form-input" name="task" placeholder="Введите название задачи"/>
+                    <div class="tasks-form-error">Название задачи не должно быть пустым</div>
                 </form>
                 <div class="tasks-pinned">
                     <h2>Pinned:</h2>
@@ -79,6 +87,8 @@ export class Tasks {
         clearTimeout(this.timeoutId);
         this.filterText = e.target.value;
 
+        this.setVisibleToErrorElement(false);
+
         setTimeout(() => this.updateTasks(), 100);
     }
 
@@ -89,7 +99,7 @@ export class Tasks {
         const fd = new FormData(form);
         const taskText = fd.get("task");
 
-        if (taskText) {
+        if (taskText.trim()) {
             this.addTask(taskText);
 
             form.reset();
@@ -97,6 +107,8 @@ export class Tasks {
 
             this.updateTasks();
             this.scrollToLastListItem();
+        } else {
+            this.setVisibleToErrorElement(true);
         }
     }
 
@@ -194,6 +206,14 @@ export class Tasks {
                 <h3>${text}</h3>
             </li>
         `;
+    }
+
+    setVisibleToErrorElement(value) {
+        if (value) {
+            this.errorElement.classList.add(SHOW_ERROR_CLASS);
+        } else {
+            this.errorElement.classList.remove(SHOW_ERROR_CLASS);
+        }
     }
 }
 
