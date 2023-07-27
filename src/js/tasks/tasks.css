@@ -1,0 +1,127 @@
+.tasks {
+    display: grid;
+    gap: 25px;
+}
+
+.tasks-form {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+
+    background-color: #fff;
+}
+
+.tasks-form-input {
+    width: 100%;
+    padding: 15px;
+
+    border: 1px solid #000;
+
+    outline: none;
+}
+
+.tasks-pinned {
+}
+
+.list {
+    display: grid;
+    gap: 20px;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.list-item {
+    position: relative;
+
+    min-width: 320px;
+
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.list-item:hover {
+    background-color: beige;
+}
+
+.list-item_border_no {
+    border: none;
+}
+
+.list-item_border_no:hover {
+    background-color: initial;
+}
+
+.btn-remove {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(-50%, -50%);
+
+    width: 25px;
+    height: 25px;
+
+    color: #f00;
+
+    border: 1px solid #f00;
+    border-radius: 3px;
+
+    background-color: #fff;
+
+    cursor: pointer;
+}
+
+.list-pinned-tasks {
+}
+
+.list-all-tasks {
+}
+
+.list-item-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px;
+
+    cursor: pointer;
+}
+
+.checkbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.checkbox-input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    visibility: hidden;
+}
+
+.checkbox-figure {
+    position: absolute;
+
+    display: none;
+
+    transform: translateY(2px);
+
+    user-select: none;
+}
+
+.checkbox-input:checked + .checkbox-figure {
+    display: flex;
+}

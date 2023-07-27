@@ -1,5 +1,10 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    min-height: 100vh;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+
+    padding-block-start: 15px;
 }
